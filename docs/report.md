@@ -1,7 +1,7 @@
 # L3 design pattern report
 
-- **Firstname**: [Your firstname]
-- **Lastname**: [Your lastname]
+- **Firstname**: Dufrénois
+- **Lastname**: Mélène
 
 
 > Add your thoughts on every TP bellow, everything is interresting but no need to right a book.
@@ -22,4 +22,6 @@
 > Fill free to contact me if needed.
 
 ---
-...
+- J'ai séparé le fichier App en différentes classes, ce qui permet de séparer chaque information et ainsi d'avoir un code clair et concis.
+- La clareté des lignes de codes m'a aidé dans le compréhension de celui-ci.
+- J'ai trouvé complexe de répartir correctement les variables pour chacune des classes.
