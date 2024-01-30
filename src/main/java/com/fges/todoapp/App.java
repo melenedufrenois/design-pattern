@@ -1,5 +1,11 @@
 package com.fges.todoapp;
 
+import com.fges.todoapp.Commands.Command;
+import com.fges.todoapp.Commands.InsertCommand;
+import com.fges.todoapp.Commands.ListCommand;
+import com.fges.todoapp.Options.OptionsDone;
+import com.fges.todoapp.Options.OptionsParser;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,7 +14,6 @@ import java.text.ParseException;
 import java.util.List;
 
 public class App {
-
     public static void main(String[] args) throws Exception {
         System.exit(exec(args));
     }
@@ -17,10 +22,11 @@ public class App {
         OptionsParser optParser;
         try {
             optParser = new OptionsParser(args);
-        } catch (ParseException ex) {
+        } catch (Exception ex) {
             System.err.println("Fail to parse arguments: " + ex.getMessage());
             return 1;
         }
+
 
         List<String> positionalArgs = optParser.getPositionArgs();
         if (positionalArgs.isEmpty()) {

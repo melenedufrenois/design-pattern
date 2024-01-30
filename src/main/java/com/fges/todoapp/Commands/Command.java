@@ -1,4 +1,7 @@
-package com.fges.todoapp;
+package com.fges.todoapp.Commands;
+
+import com.fges.todoapp.Options.OptionsDone;
+import com.fges.todoapp.Options.OptionsParser;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -8,6 +11,7 @@ public abstract class Command {
     public OptionsParser opt;
     public String fileContent;
     public Path filePath;
+    public OptionsDone optionsDone;
 
     public Command(String cmd, OptionsParser opt, String fileContent, Path filePath) {
         this.cmd = cmd;
@@ -17,7 +21,7 @@ public abstract class Command {
     }
 
     public boolean isCommand() {
-        return "insert".equals(cmd) || "list".equals(cmd);
+        return support().equals(cmd);
     }
 
     public abstract String support();

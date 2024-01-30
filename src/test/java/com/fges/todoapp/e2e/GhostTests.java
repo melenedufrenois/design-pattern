@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RunWith(Parameterized.class)
 public class GhostTests {
@@ -83,7 +84,9 @@ public class GhostTests {
 
         return new ExecOutput(
                 sequence,
-                Arrays.stream(sout.toString().split("\n")).map(String::trim)).toList(),
+                Arrays.stream(sout.toString().split("\n"))
+                        .map(String::trim)
+                        .collect(Collectors.toList()),
                 exitOutput
         );
     }
