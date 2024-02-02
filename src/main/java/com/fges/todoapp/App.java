@@ -22,11 +22,18 @@ public class App {
         OptionsParser optParser;
         try {
             optParser = new OptionsParser(args);
-        } catch (Exception ex) {
+        } catch (ParseException ex) {
             System.err.println("Fail to parse arguments: " + ex.getMessage());
             return 1;
         }
 
+        OptionsDone optionsDone;
+        try {
+            optionsDone = new OptionsDone(args);
+        } catch (ParseException ex) {
+            System.err.println("Fail to parse options: " + ex.getMessage());
+            return 1;
+        }
 
         List<String> positionalArgs = optParser.getPositionArgs();
         if (positionalArgs.isEmpty()) {
@@ -48,7 +55,7 @@ public class App {
                 cmd = new InsertCommand(command, optParser, fileContent, filePath);
                 break;
             case "list":
-                cmd = new ListCommand(command, optParser, fileContent, null);
+                cmd = new ListCommand(command, optParser, fileContent, optionsDone);
                 break;
             default:
                 System.err.println("Unknown command");
@@ -59,5 +66,6 @@ public class App {
 
         System.err.println("Done.");
         return 0;
+    }
     }
 }

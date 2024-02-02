@@ -17,6 +17,7 @@ public class ListCommand extends Command {
 
     public ListCommand(String cmd, OptionsParser opt, String fileContent, OptionsDone optionsDone) {
         super(cmd, opt, fileContent, null);
+        this.optionsDone = optionsDone;
     }
 
     public void exec(){
@@ -41,6 +42,9 @@ public class ListCommand extends Command {
                     .map(todo -> "- " + todo)
                     .collect(Collectors.joining("\n"))
             );
+        }
+        if (optionsDone != null && optionsDone.isDone()) {
+            System.out.println("Done.");
         }
     }
 
