@@ -1,8 +1,6 @@
 package com.fges.todoapp;
 
-import com.fges.todoapp.Commands.Command;
-import com.fges.todoapp.Commands.InsertCommand;
-import com.fges.todoapp.Commands.ListCommand;
+import com.fges.todoapp.Commands.*;
 import com.fges.todoapp.Options.OptionsDone;
 import com.fges.todoapp.Options.OptionsParser;
 
@@ -15,24 +13,15 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.exit(exec(args));
+        System.exit(exec(args)).
     }
 
     public static int exec(String[] args) throws IOException {
         OptionsParser optParser;
         try {
             optParser = new OptionsParser(args);
-        } catch (ParseException ex) {
-            System.err.println("Fail to parse arguments: " + ex.getMessage());
-            return 1;
-        }
-
-        OptionsDone optionsDone;
-        try {
-            optionsDone = new OptionsDone(args);
-        } catch (ParseException ex) {
-            System.err.println("Fail to parse options: " + ex.getMessage());
-            return 1;
+        } catch (org.apache.commons.cli.ParseException e) {
+            throw new RuntimeException(e);
         }
 
         List<String> positionalArgs = optParser.getPositionArgs();
@@ -55,7 +44,9 @@ public class App {
                 cmd = new InsertCommand(command, optParser, fileContent, filePath);
                 break;
             case "list":
-                cmd = new ListCommand(command, optParser, fileContent, optionsDone);
+                TodoDataSource dataSource = createTodoDataSource();
+                ListCommand cmdlist = new ListCommand(command, optParser, fileContent, dataSource);
+                cmd = cmdlist;
                 break;
             default:
                 System.err.println("Unknown command");
@@ -67,5 +58,27 @@ public class App {
         System.err.println("Done.");
         return 0;
     }
+
+    private static TodoDataSource createTodoDataSource() {
+        String configFilePath = "config.txt";
+        String dataSourceType = readDataSourceType(configFilePath);
+
+        switch (dataSourceType) {
+            case "file":
+                String filePath = readFilePathFromConfig(configFilePath);
+                return new FileTodoDataSource(Paths.get(filePath));
+            default:
+                throw new IllegalArgumentException("Invalid data source type specified in configuration: " + dataSourceType);
+        }
     }
+
+    private static String readDataSourceType(String configFilePath) {
+        // Implement logic to read data source type from the configuration file
+        // Example: Read the first line of the file
+    }
+
+    private static String readFilePathFromConfig(String configFilePath) {
+        // Implement logic to read file path for file-based data source from the configuration file
+    }
+
 }
