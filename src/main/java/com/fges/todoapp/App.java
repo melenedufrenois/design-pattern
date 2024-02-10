@@ -72,12 +72,12 @@ public class App {
         }
     }
 
-    private static String readDataSourceType(String configFilePath) {
+    public static String readDataSourceType(String configFilePath) {
         // Implement logic to read data source type from the configuration file
         // Example: Read the first line of the file
     }
 
-    private static String readFilePathFromConfig(String configFilePath) {
+    public static String readFilePathFromConfig(String configFilePath) {
         // Implement logic to read file path for file-based data source from the configuration file
     }
 
