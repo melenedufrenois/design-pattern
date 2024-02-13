@@ -4,7 +4,6 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
-
 import java.text.ParseException;
 
 public class OptionsDone {
@@ -20,7 +19,15 @@ public class OptionsDone {
         this.done = cmd.hasOption("d");
     }
 
-    public boolean isDone() {
-        return done;
+    public String getName() {
+        return ("isDone");
+    }
+
+    public String getDescription() {
+        return ("Options Done");
+    }
+
+    public boolean isRequired() {
+        return false;
     }
 }

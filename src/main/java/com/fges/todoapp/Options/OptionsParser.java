@@ -1,7 +1,6 @@
 package com.fges.todoapp.Options;
 
 import org.apache.commons.cli.*;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;

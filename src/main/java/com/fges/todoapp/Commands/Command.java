@@ -20,10 +20,6 @@ public abstract class Command {
         this.filePath = filePath;
     }
 
-    public boolean isCommand() {
-        return support().equals(cmd);
-    }
-
     public abstract String support();
 
     public abstract void exec() throws IOException;
