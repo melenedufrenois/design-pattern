@@ -41,6 +41,8 @@ Mes classes :
 
 - **ListCommand**: Gère la logique liée à la command "list".
 
+- **MigrateCommand** : Gère la logique liée à la commande "migrate".
+
 - **Command**: Fournit une base commune pour les classes InsertCommand et ListCommand, éliminant la redondance du code partagé.
 
 - **OptionsParser**: Analyse et traite les options passées en ligne de commande.
@@ -79,22 +81,15 @@ Diagramme de classes **Mermaid** :
     ListCommand : exec()
     ListCommand : support()
 
+    MigrateCommand -- Command : Extends
+    MigrateCommand -- OptionsParser : Uses
+    MigrateCommand : exec()
+    MigrateCommand : support()
+    MigrateCommand : migrateJsonToJson()
+    MigrateCommand : migrateJsonToCsv()
+    MigrateCommand : migrateCsvToCsv()
+    MigrateCommand : migrateCsvToJson()
+
 ---
 **A noter :** 
 J'ai pu travailler avec Sacha Duvivier.
-
----
-Pour le 26/02 : 
-
-Terminer l'ajout d'optionsDone
-
-Rajouter commande "migrate" qui prend une source json et une 
-destination csv tel que : 
-
-"-s toto.json --dest toto.csv"
-
-à noter que la commande peut faire :
-- json --> json
-- json --> csv
-- csv --> json
-- csv --> csv
