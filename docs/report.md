@@ -35,25 +35,17 @@ La structure modulaire permet des modifications spécifiques à chaque classe sa
 ---
 Mes classes :
 
-- **App**
+- **App**: Correspond au Main.
 
-- **InsertCommand**: Gère la logique liée à l'insertion de données. Contient les variables nécessaires à l'insertion, évitant ainsi toute confusion avec d'autres données et variables.
+- **InsertCommand**: Gère la logique liée à la command "insert".
 
-- **ListCommand**: Gère la logique liée à la liste de commandes. Comprend les variables spécifiques à la fonction de liste, assurant une isolation claire des données.
+- **ListCommand**: Gère la logique liée à la command "list".
 
-- **Command**: Fournit une base commune pour les classes InsertCommand et ListCommand, éliminant la redondance du code partagé. Peut contenir des éléments partagés entre les différentes commandes.
+- **Command**: Fournit une base commune pour les classes InsertCommand et ListCommand, éliminant la redondance du code partagé.
 
-- **OptionsParser**: Analyse et traite les options passées en ligne de commande. Inclut les variables nécessaires pour interpréter les options, contribuant à la clarté du code.
+- **OptionsParser**: Analyse et traite les options passées en ligne de commande.
 
-- **FileTodoDataSource**
-
-- **Todo**
-
-- **TodoDataSource**
-
-- **FileTodoDataSourceFactory**
-
-- **OptionsDone**
+- **OptionsDone**: Analyse la commande à effectuer et vérifie si celle-ci est effectuée ou non.
 
 Ce qui permet de séparer les différents blocs et information et ainsi d'obtenir un code clair.
 
@@ -93,6 +85,8 @@ J'ai pu travailler avec Sacha Duvivier.
 
 ---
 Pour le 26/02 : 
+
+Terminer l'ajout d'optionsDone
 
 Rajouter commande "migrate" qui prend une source json et une 
 destination csv tel que : 

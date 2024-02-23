@@ -40,6 +40,7 @@ public class App {
         switch (command) {
             case "insert" -> cmd = new InsertCommand(command, optParser, fileContent, filePath);
             case "list" -> cmd = new ListCommand(command, optParser, fileContent);
+            case "migrate"-> cmd = new MigrateCommand(command, optParser, fileContent, filePath);
             default -> {
                 System.err.println("Unknown command");
                 return 1;

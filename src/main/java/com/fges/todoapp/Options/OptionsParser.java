@@ -25,4 +25,8 @@ public class OptionsParser {
     public String getFileName() {
         return cmd.getOptionValue("s");
     }
+
+    public String getDestFileName() {
+        return cmd.getOptionValue("dest");
+    }
 }
