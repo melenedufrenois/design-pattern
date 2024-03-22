@@ -4,12 +4,12 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
-import java.text.ParseException;
+import org.apache.commons.cli.ParseException;
 
 public class OptionsDone {
-    private boolean done;
+    private final boolean done;
 
-    public OptionsDone(String[] args) throws ParseException, org.apache.commons.cli.ParseException {
+    public OptionsDone(String[] args) throws ParseException {
         CommandLineParser parser = new DefaultParser();
         Options options = new Options();
         options.addOption("d", "done", false, "Mark the todo as done");
@@ -19,15 +19,7 @@ public class OptionsDone {
         this.done = cmd.hasOption("d");
     }
 
-    public String getName() {
-        return ("isDone");
-    }
-
-    public String getDescription() {
-        return ("Options Done");
-    }
-
-    public boolean isRequired() {
-        return false;
+    public boolean isDone() {
+        return done;
     }
 }

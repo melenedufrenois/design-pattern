@@ -9,12 +9,16 @@ import com.fasterxml.jackson.databind.node.MissingNode;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import com.fges.todoapp.Options.OptionsDone;
 import com.fges.todoapp.Options.OptionsParser;
 
 public class ListCommand extends Command {
 
-    public ListCommand(String cmd, OptionsParser opt, String fileContent) {
+    private final OptionsDone optionsDone;
+
+    public ListCommand(String cmd, OptionsParser opt, String fileContent, OptionsDone optionsDone) {
         super(cmd, opt, fileContent, null);
+        this.optionsDone = optionsDone;
     }
 
     @Override
@@ -42,7 +46,9 @@ public class ListCommand extends Command {
                     .collect(Collectors.joining("\n"))
             );
         }
-        //ajouter truc de optionDone
+        if (optionsDone != null && optionsDone.isDone()) {
+            System.out.println("done.");
+        }
     }
 
     @Override

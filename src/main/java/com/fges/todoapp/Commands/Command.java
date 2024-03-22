@@ -23,4 +23,8 @@ public abstract class Command {
     public abstract String support();
 
     public abstract void exec() throws IOException;
+
+    public abstract void exec(String[] args) throws Exception;
+
+    public abstract int neededArgs();
 }

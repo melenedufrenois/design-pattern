@@ -52,6 +52,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>fr.anthonyquere</groupId>
+      <artifactId>dumbcrud</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
   <build>
